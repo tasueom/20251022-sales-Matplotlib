@@ -6,6 +6,12 @@
     <title>매출 시스템</title>
 </head>
 <body>
-    
+    <div class="container">
+        <h2>매출 시스템</h2>
+        <h3>매출 데이터 CSV 파일 업로드</h3>
+        <form action="{{ url_for('import_csv') }}" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" accept=".csv" required><br>
+            <button type="submit">업로드</button>
+        </form>
+    </div>
 </body>
-</html>
