@@ -8,10 +8,33 @@
 <body>
     <div class="container">
         <h2>매출 시스템</h2>
-        <h3>매출 데이터 CSV 파일 업로드</h3>
-        <form action="{{ url_for('import_csv') }}" method="post" enctype="multipart/form-data">
-            <input type="file" name="file" accept=".csv" required><br>
-            <button type="submit">업로드</button>
-        </form>
+        <div class="left">
+            <h3>매출 데이터 CSV 파일 업로드</h3>
+            <form action="{{ url_for('import_csv') }}" method="post" enctype="multipart/form-data">
+                <input type="file" name="file" accept=".csv" required><br>
+                <button type="submit">업로드</button>
+            </form>
+        </div>
+        <div class="right">
+            <h3>매출표</h3>
+            <table>
+                <tr>
+                    <th>상품코드</th>
+                    <th>상품명</th>
+                    <th>단가</th>
+                    <th>수량</th>
+                    <th>매출액</th>
+                </tr>
+                {% for product in products %}
+                <tr>
+                    <td>{{ product[0] }}</td>
+                    <td>{{ product[1] }}</td>
+                    <td>{{ product[2] }}</td>
+                    <td>{{ product[3] }}</td>
+                    <td>{{ product[4] }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
     </div>
 </body>

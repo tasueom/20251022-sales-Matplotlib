@@ -5,7 +5,8 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return ren('index.html')
+    products = db.get_all_products()
+    return ren('index.html', products=products)
 
 @app.route('/import_csv', methods=['POST'])
 def import_csv():

@@ -53,3 +53,12 @@ def insert_product(pid, pname, price, quantity, sale):
     """, (pid, pname, price, quantity, sale))
     conn.commit()
     conn.close()
+
+def get_all_products():
+    """모든 상품 정보 조회"""
+    conn = get_conn()
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM sales")
+    rows = cur.fetchall()
+    conn.close()
+    return rows
