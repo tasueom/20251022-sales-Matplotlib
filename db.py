@@ -28,11 +28,11 @@ def create_table():
     cur = conn.cursor()
     cur.execute("""
         CREATE TABLE IF NOT EXISTS sales (
-            pid VARCHAR(50),
-            pname VARCHAR(100),
-            price INT,
-            quantity INT,
-            sale INT
+            pid VARCHAR(50) primary key,
+            pname VARCHAR(100) not null,
+            price INT not null,
+            quantity INT not null,
+            sale INT not null
         )
     """)
     conn.commit()
