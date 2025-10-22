@@ -1,6 +1,19 @@
 from flask import Flask, render_template as ren, request, redirect, url_for
 import pandas as pd
 import db
+
+import os, time
+import matplotlib
+matplotlib.use("Agg")  # 서버 환경에서 GUI 없이 사용
+import numpy as np, pandas as pd, matplotlib.pyplot as plt
+from matplotlib import font_manager, rc
+
+# 한글 폰트 설정
+font_path = "C:/Windows/Fonts/malgun.ttf"
+font_name = font_manager.FontProperties(fname=font_path).get_name()
+rc('font', family = font_name)
+plt.rcParams['axes.unicode_minus'] = False
+
 app = Flask(__name__)
 
 @app.route('/')
