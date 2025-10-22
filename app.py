@@ -24,6 +24,7 @@ def create_plot():
     plt.figure(figsize=(10, 6))
     plt.bar(pnames, sales, color='skyblue')
     plt.ylabel("매출액 (만원)")
+    plt.xticks(rotation=60)  # 상품명이 겹치는 것 방지
     plt.savefig('static/img/sales_plot.png', dpi=300, bbox_inches='tight', pad_inches=0)
     plt.close()
 
