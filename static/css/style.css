@@ -1,0 +1,100 @@
+body {
+    background: #f8fafc;
+    color: #222;
+    margin: 0;
+    font-family: 'Segoe UI', 'Malgun Gothic', Arial, sans-serif;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 40px auto;
+    background: #fff;
+    border-radius: 14px;
+    padding: 40px 30px;
+    box-shadow: 0 8px 26px rgba(0,0,0,0.07), 0 1.5px 7px rgba(0,0,0,0.02);
+    display: flex;
+    justify-content: space-between;
+    gap: 48px;
+}
+
+.left, .right {
+    flex: 1 1 0;
+    padding: 10px 16px 24px 16px;
+    background: #fcfcfc;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(110, 110, 255, 0.08);
+}
+
+.left {
+    margin-right: 18px;
+}
+
+.right {
+    margin-left: 18px;
+}
+
+h2, h3 {
+    margin-top: 0;
+    color: #3a3a45;
+    font-weight: 600;
+}
+
+form {
+    margin-top: 26px;
+    margin-bottom: 6px;
+}
+
+input[type="file"] {
+    background: #f5f9ff;
+    border: 1px solid #d2dee8;
+    border-radius: 5px;
+    padding: 8px 4px;
+    width: 92%;
+    margin-bottom: 14px;
+}
+
+button {
+    background: #6265fa;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 9px 22px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.17s;
+    margin-top: 6px;
+}
+button:hover {
+    background: #4a55cc;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 12px 14px;
+    text-align: left;
+}
+
+th {
+    color: #47486e;
+    background: #f2f4f7;
+    font-weight: 500;
+    border-bottom: 2px solid #e6ebf5;
+}
+
+td {
+    border-bottom: 1px solid #f0f0f8;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
