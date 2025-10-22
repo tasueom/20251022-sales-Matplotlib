@@ -16,10 +16,23 @@ plt.rcParams['axes.unicode_minus'] = False
 
 app = Flask(__name__)
 
+def create_plot():
+    """모든 상품의 매출액을 막대그래프로 시각화하여 이미지 파일로 저장"""
+    products = db.get_all_products()
+    pnames = [p[1] for p in products]
+    sales = [p[4] / 10000 for p in products]  # 만원으로 변환
+    plt.figure(figsize=(10, 6))
+    plt.bar(pnames, sales, color='skyblue')
+    plt.ylabel("매출액 (만원)")
+    plt.savefig('static/img/sales_plot.png', dpi=300, bbox_inches='tight', pad_inches=0)
+    plt.close()
+
 @app.route('/')
 def index():
     products = db.get_all_products()
-    return ren('index.html', products=products)
+    create_plot()
+    plot_path = url_for('static', filename='img/sales_plot.png')
+    return ren('index.html', products=products, plot_path=plot_path)
 
 @app.route('/import_csv', methods=['POST'])
 def import_csv():
