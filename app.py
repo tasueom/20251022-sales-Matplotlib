@@ -27,12 +27,12 @@ def import_csv():
     for i in range(len(df)):
         row = df.iloc[i]
         # 각 줄의 값을 변수에 저장
-        pid = row['상품코드']
+        pcode = row['상품코드']
         pname = row['상품명']
         price = row['단가']
         quantity = row['수량']
         sale = row['매출액']
-        db.insert_product(pid, pname, price, quantity, sale)
+        db.insert_product(pcode, pname, price, quantity, sale)
     return redirect(url_for('index'))
 
 if __name__ == '__main__':

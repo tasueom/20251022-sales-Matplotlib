@@ -28,7 +28,8 @@ def create_table():
     cur = conn.cursor()
     cur.execute("""
         CREATE TABLE IF NOT EXISTS sales (
-            pid VARCHAR(50) primary key,
+            pid int primary key auto_increment,
+            pcode VARCHAR(50) not null,
             pname VARCHAR(100) not null,
             price INT not null,
             quantity INT not null,
@@ -43,14 +44,14 @@ def init_all():
     init_db()
     create_table()
 
-def insert_product(pid, pname, price, quantity, sale):
+def insert_product(pcode, pname, price, quantity, sale):
     """상품 정보 삽입"""
     conn = get_conn()
     cur = conn.cursor()
     cur.execute("""
-        INSERT INTO sales (pid, pname, price, quantity, sale)
+        INSERT INTO sales (pcode, pname, price, quantity, sale)
         VALUES (%s, %s, %s, %s, %s)
-    """, (pid, pname, price, quantity, sale))
+    """, (pcode, pname, price, quantity, sale))
     conn.commit()
     conn.close()
 
@@ -58,7 +59,7 @@ def get_all_products():
     """모든 상품 정보 조회"""
     conn = get_conn()
     cur = conn.cursor()
-    cur.execute("SELECT * FROM sales")
+    cur.execute("SELECT pcode, pname, price, quantity, sale FROM sales")
     rows = cur.fetchall()
     conn.close()
     return rows
