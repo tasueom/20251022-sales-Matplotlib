@@ -16,9 +16,9 @@ def get_conn():
 
 def init_db():
     """데이터베이스 생성"""
-    conn = get_conn()
+    conn = mysql.connector.connect(**base_config)  # DB 없이 연결
     cur = conn.cursor()
-    cur.execute(f"create database if not exists {DB_NAME} default character set utf8mb4")
+    cur.execute(f"CREATE DATABASE IF NOT EXISTS {DB_NAME} DEFAULT CHARACTER SET utf8mb4")
     conn.commit()
     conn.close()
 
@@ -42,3 +42,14 @@ def init_all():
     """DB와 테이블 모두 초기화 (편의 함수)"""
     init_db()
     create_table()
+
+def insert_product(pid, pname, price, quantity, sale):
+    """상품 정보 삽입"""
+    conn = get_conn()
+    cur = conn.cursor()
+    cur.execute("""
+        INSERT INTO sales (pid, pname, price, quantity, sale)
+        VALUES (%s, %s, %s, %s, %s)
+    """, (pid, pname, price, quantity, sale))
+    conn.commit()
+    conn.close()
