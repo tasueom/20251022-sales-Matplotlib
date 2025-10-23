@@ -2,7 +2,7 @@ from flask import Flask, render_template as ren, request, redirect, url_for
 import pandas as pd
 import db
 
-import os, time
+import os
 import matplotlib
 matplotlib.use("Agg")  # 서버 환경에서 GUI 없이 사용
 import numpy as np, pandas as pd, matplotlib.pyplot as plt
