@@ -18,6 +18,9 @@ app = Flask(__name__)
 
 def create_plot():
     """모든 상품의 매출액을 막대그래프로 시각화하여 이미지 파일로 저장"""
+    # static/img 폴더가 없으면 생성
+    os.makedirs('static/img', exist_ok=True)
+    
     products = db.get_all_products()
     pnames = [p[1] for p in products]
     sales = [p[4] / 10000 for p in products]  # 만원으로 변환
